@@ -478,6 +478,17 @@ Skills
     transform: translateY(-4px);
 }
 
+/* ========================
+Project section
+======================== */
+.pro h1{
+     font-family: "Cormorant Garamond", serif;
+    color: rgb(0, 220, 255);
+    font-size: clamp(42px, 4vw, 65px);
+    margin-bottom: 40px;
+    text-align: center;
+}
+
 /* ======================
 Contact Section
 ======================== */
