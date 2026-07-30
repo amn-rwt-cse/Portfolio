@@ -1,0 +1,805 @@
+/* =========================
+   GENERAL
+========================= */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: rgb(247, 249, 252);
+}
+
+html {
+    scrollbar-width: none;
+}
+
+body {
+    background-color: rgb(4, 4, 37);
+    -ms-overflow-style: none;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+
+    width: 100%;
+    min-height: 60px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 25px;
+
+    background: rgba(0, 0, 0, 0.4);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+nav ul {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    white-space: nowrap;
+
+    font-size: clamp(18px, 2vw, 26px);
+}
+
+
+/* Navbar bottom fade */
+
+nav::after {
+    content: "";
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+    height: 50px;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.4) 0%,
+        rgba(0, 0, 0, 0.2) 40%,
+        rgba(0, 0, 0, 0.08) 70%,
+        transparent 100%
+    );
+
+    pointer-events: none;
+}
+/* color active navigation */
+.nav-link {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.nav-link.active {
+    color: #00dcff;
+}
+/* dp&name in nav */
+.nav-profile {
+    display: none;
+    align-items: center;
+    gap: 10px;
+}
+.about-link.active .about-text {
+    color: rgb(0, 220, 255);
+}
+
+.about-link.active .nav-profile span {
+    color: rgb(0, 220, 255);
+}
+
+.nav-profile img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+    border: 2px solid rgb(0, 220, 255);
+}
+.about-link.profile-active .about-text {
+    display: none;
+}
+
+.about-link.profile-active .nav-profile {
+    display: flex;
+}
+
+/* =========================
+   ABOUT / HERO SECTION
+========================= */
+
+.name {
+    width: 100%;
+    min-height: calc(100vh - 60px);
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* =========================
+   IMAGE SIDE
+========================= */
+
+.image-container {
+    position: relative;
+
+    width: 45%;
+    height: calc(100vh - 60px);
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.logo {
+    width: 90%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: bottom;
+
+    display: block;
+}
+
+
+/* Image bottom fade */
+
+.image-container::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 25%;
+
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgb(4, 4, 37)
+    );
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   TEXT SIDE
+========================= */
+
+.name-text {
+    width: 55%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 40px 60px;
+
+    line-height: 1.5;
+}
+
+.name-text h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(42px, 4vw, 65px);
+    line-height: 1.1;
+    margin-bottom: 8px;
+    color:rgb(0,220,255);
+}
+
+.name-text .sd {
+    font-size: clamp(22px, 2.2vw, 34px);
+    font-weight: 700;
+    color: rgb(180,210,245);
+    margin-bottom: 5px;
+    opacity: 0;
+}
+
+.name-text p {
+    font-size: clamp(17px, 1.5vw, 24px);
+    font-weight: 300;
+    line-height: 1.5;
+     opacity: 0;
+}
+.name.animate .sd {
+    animation: slideFromLeft 0.8s ease-out forwards;
+}
+
+.name.animate .name-text p {
+    animation: slideFromLeft 0.8s ease-out 0.8s forwards;
+}
+@keyframes slideFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 20px;
+    padding-top: 15px;
+    opacity: 0;
+    border-top: 1px solid rgba(180, 210, 245, 0.35);
+}
+
+.location img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.location span {
+    color: rgb(180, 210, 245);
+ font-size: clamp(16px, 1.4vw, 21px);
+    font-weight: 400;
+}
+.name.animate .location {
+    animation: slideFromLeft 0.8s ease-out 1.2s forwards;
+}
+/* resume button */
+.resume-btn {
+    display: inline-block;
+    width: fit-content;
+
+    margin-top: 20px;
+    padding: 10px 22px;
+
+    color: rgb(0, 220, 255);
+    background: transparent;
+
+    border: 2px solid rgb(0, 220, 255);
+    border-radius: 8px;
+
+    text-decoration: none;
+    font-size: clamp(15px, 1.2vw, 18px);
+    font-weight: 500;
+    opacity:0;
+    transition: all 0.3s ease;
+}
+
+.resume-btn:hover {
+    background: rgb(0, 220, 255);
+    color: rgb(4, 4, 37);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 5px 20px rgba(0, 220, 255, 0.25);
+}
+.name.animate .resume-btn {
+    animation: slideFromLeft 0.8s ease-out 1.5s forwards;
+}
+
+/* =============================
+Eductaional qulification Section
+================================*/
+.education {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 80px 5%;
+}
+
+.education > h1 {
+    text-align: center;
+    font-family: "Cormorant Garamond", serif;
+    grid-column: 1 / -1;
+    font-size: clamp(42px, 4vw, 65px);
+    margin-bottom: 20px;
+    color:rgb(0,220,255);
+}
+
+.content {
+    position: relative;
+    width: 100%;
+    padding: 35px 25px;
+    background-color: rgb(13,27,62) !important;
+    border: 2px solid rgb(247, 249, 252);
+    border-radius: 20px;
+    background-color: rgb(4, 4, 37);
+    opacity: 0;
+    transform: translateX(-150px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.date {
+    display: inline-block;
+    background-color: rgb(247, 249, 252);
+    padding: 7px 16px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.content .date h4 {
+    color: rgb(4, 4, 37);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.edlogo {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.logo-container h3 {
+    margin: 0;
+}
+
+.content h2 {
+    font-size: clamp(20px, 2vw, 28px);
+    line-height: 1.3;
+}
+
+.content h3 {
+    font-size: clamp(17px, 1.5vw, 22px);
+}
+
+.content h4 {
+    font-size: clamp(15px, 1.3vw, 19px);
+}
+.education.animate .content {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.education.animate .content:nth-of-type(1) {
+    transition-delay: 0s;
+}
+
+.education.animate .content:nth-of-type(2) {
+    transition-delay: 0.3s;
+}
+
+.education.animate .content:nth-of-type(3) {
+    transition-delay: 0.6s;
+}
+@keyframes cardSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-150px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* ==================
+Skills
+================= */
+.skills {
+    width: 100%;
+    min-height: 100vh;
+    padding: 80px 5%;
+    background-color: rgb(4, 4, 37);
+}
+
+.skills > h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(42px, 4vw, 65px);
+    color: rgb(0, 220, 255);
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.skill-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    align-items: center;
+    gap: 30px;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid rgba(180, 210, 245, 0.25);
+}
+
+.skill-row h2 {
+    font-size: clamp(18px, 1.7vw, 25px);
+    font-weight: 600;
+    color: rgb(180, 210, 245);
+}
+
+.skill-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.skill-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 55px;
+    padding: 12px 20px;
+
+    background-color: rgb(13, 27, 62);
+
+    border: 1px solid rgba(180, 210, 245, 0.35);
+    border-radius: 10px;
+
+    color: rgb(247, 249, 252);
+
+    font-size: clamp(15px, 1.3vw, 19px);
+    text-align: center;
+
+    transition: 0.3s ease;
+}
+
+.skill-box:hover {
+    color: rgb(4, 4, 37);
+    background-color: rgb(0, 220, 255);
+    border-color: rgb(0, 220, 255);
+
+    transform: translateY(-4px);
+}
+
+/* ======================
+Contact Section
+======================== */
+.con {
+    width: 100%;
+    min-height: 100vh;
+    padding: 80px 5%;
+    background-color: rgb(4, 4, 37);
+}
+
+.con > h1 {
+    font-family: "Cormorant Garamond", serif;
+    color: rgb(0, 220, 255);
+    font-size: clamp(42px, 4vw, 65px);
+    margin-bottom: 40px;
+    text-align: center;
+}
+.con > h1 span {
+   font-style:italic;
+    color: rgb(0, 220, 255);
+}
+.contact-box {
+    width: 100%;
+    padding: 50px 40px;
+
+    background-color: rgb(13, 27, 62);
+
+    border: 2px solid rgb(247, 249, 252);
+    border-radius: 20px;
+
+    text-align: center;
+}
+
+.contact-box h2 {
+    color: rgb(180, 210, 245);
+    font-size: clamp(20px, 2vw, 30px);
+    margin-bottom: 50px;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 30px;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 12px;
+
+    text-decoration: none;
+}
+
+.contact-item img {
+    width: 65px;
+    height: 65px;
+
+    object-fit: contain;
+
+    transition: 0.3s ease;
+}
+
+.contact-item p {
+    color: rgb(247, 249, 252);
+    font-size: clamp(14px, 1.3vw, 18px);
+
+    transition: 0.3s ease;
+}
+
+.contact-item:hover img {
+    transform: translateY(-6px) scale(1.08);
+}
+
+.contact-item:hover p {
+    color: rgb(0, 220, 255);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    /* Navbar */
+
+    nav {
+        position: fixed;
+        min-height: auto;
+        padding: 0 10px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+
+        gap: 10px 20px;
+
+        padding: 10px 0;
+    }
+
+    nav a {
+        font-size: 16px;
+        white-space: nowrap;
+    }
+
+
+    /* Hero */
+
+    .name {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+
+    /* Image */
+
+    .image-container {
+        width: 100%;
+        height: 45vh;
+
+        overflow: hidden;
+    }
+
+    .logo {
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+        object-position: bottom;
+    }
+
+
+    /* Mobile image fade */
+
+    .image-container::after {
+        height: 25%;
+
+        background: linear-gradient(
+            to bottom,
+            transparent,
+            rgb(4, 4, 37)
+        );
+    }
+
+
+    /* Text */
+
+    .name-text {
+        width: 100%;
+
+        padding: 20px 25px 40px;
+
+        transform: none;
+    }
+
+    .name-text h1 {
+        font-size: clamp(36px, 10vw, 48px);
+        margin-bottom: 4px;
+    }
+
+    .name-text .sd {
+        font-size: clamp(20px, 6vw, 27px);
+        margin-bottom: 2px;
+    }
+
+    .name-text p {
+        font-size: clamp(16px, 4.5vw, 20px);
+        line-height: 1.2;
+    }
+    /* Education section */
+    .education {
+        min-height: 100vh;
+        padding: 40px 15px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .education > h1 {
+        font-size: 28px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    .content {
+        width: 100%;
+        padding: 12px 15px;
+        margin: 0;
+
+        border: 2px solid rgb(247, 249, 252);
+        border-radius: 15px;
+    }
+
+    .date {
+        padding: 3px 10px;
+        margin-bottom: 5px;
+        border-radius: 7px;
+    }
+
+    .content .date h4 {
+        font-size: 12px;
+        color: rgb(4, 4, 37);
+    }
+
+    .content h2 {
+        font-size: 17px;
+        line-height: 1.15;
+        margin-bottom: 5px;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin: 5px 0;
+    }
+
+    .edlogo {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+    }
+
+    .logo-container h3 {
+        font-size: 15px;
+        margin: 0;
+    }
+
+    .content h4 {
+        font-size: 13px;
+        line-height: 1.2;
+    }
+    /* Skill */
+     .skills {
+        min-height: 100vh;
+        padding: 40px 10px;
+    }
+
+    .skills > h1 {
+        font-size: 32px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .skill-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 0;
+    }
+
+    .skill-row h2 {
+        font-size: 18px;
+        color: rgb(180, 210, 245);
+    }
+
+    .skill-list {
+        gap: 10px;
+    }
+
+    .skill-box {
+        min-height: 42px;
+        padding: 8px 13px;
+
+        font-size: 14px;
+        border-radius: 8px;
+    }
+    /* contact */
+    .con {
+        padding: 60px 20px;
+    }
+
+    .con > h1 {
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .contact-box {
+        padding: 35px 15px;
+    }
+
+    .contact-box h2 {
+
+        font-size: 20px;
+        margin-bottom: 35px;
+    }
+
+    .contact-links {
+        gap: 15px;
+    }
+
+    .contact-item {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .contact-item img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .contact-item p {
+        font-size: 11px;
+        overflow-wrap: anywhere;
+    }
+}
