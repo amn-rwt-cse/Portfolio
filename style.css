@@ -210,6 +210,12 @@ nav::after {
     font-size: clamp(42px, 4vw, 65px);
     line-height: 1.1;
     margin-bottom: 8px;
+}
+.name-text h1 span{
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(42px, 4vw, 65px);
+    line-height: 1.1;
+    margin-bottom: 8px;
     color:rgb(0,220,255);
 }
 
@@ -661,8 +667,11 @@ Contact Section
 
         transform: none;
     }
-
     .name-text h1 {
+        font-size: clamp(36px, 10vw, 48px);
+        margin-bottom: 4px;
+    }
+    .name-text h1 span{
         font-size: clamp(36px, 10vw, 48px);
         margin-bottom: 4px;
     }
