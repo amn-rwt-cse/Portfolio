@@ -204,8 +204,13 @@ nav::after {
 
     line-height: 1.5;
 }
-
 .name-text h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(35px, 4vw, 65px);
+    line-height: 1.1;
+    margin-bottom: 8px;
+}
+.name-text h1 span{
     font-family: "Cormorant Garamond", serif;
     font-size: clamp(42px, 4vw, 65px);
     line-height: 1.1;
@@ -477,6 +482,49 @@ Skills
 
     transform: translateY(-4px);
 }
+/* Code button */
+.code-btn {
+    display: inline-block;
+    width: fit-content;
+
+    margin-top: 20px;
+    padding: 10px 22px;
+
+    color: rgb(0, 220, 255);
+    background: transparent;
+
+    border: 2px solid rgb(0, 220, 255);
+    border-radius: 8px;
+
+    text-decoration: none;
+    font-size: clamp(15px, 1.2vw, 18px);
+    font-weight: 500;
+    opacity:0;
+    transition: all 0.3s ease;
+}
+
+.code-btn:hover {
+    background: rgb(0, 220, 255);
+    color: rgb(4, 4, 37);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 5px 20px rgba(0, 220, 255, 0.25);
+}
+
+/* ========================
+Project section
+======================== */
+.pro h1{
+     font-family: "Cormorant Garamond", serif;
+    color: rgb(0, 220, 255);
+    font-size: clamp(42px, 4vw, 65px);
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+
+
 
 /* ======================
 Contact Section
@@ -652,6 +700,10 @@ Contact Section
     }
 
     .name-text h1 {
+        font-size: clamp(36px, 10vw, 48px);
+        margin-bottom: 4px;
+    }
+    .name-text h1 span{
         font-size: clamp(36px, 10vw, 48px);
         margin-bottom: 4px;
     }
