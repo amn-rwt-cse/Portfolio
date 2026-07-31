@@ -483,6 +483,35 @@ Skills
 
     transform: translateY(-4px);
 }
+/* Code button */
+.code-btn {
+    display: inline-block;
+    width: fit-content;
+
+    margin-top: 20px;
+    padding: 10px 22px;
+
+    color: rgb(0, 220, 255);
+    background: transparent;
+
+    border: 2px solid rgb(0, 220, 255);
+    border-radius: 8px;
+
+    text-decoration: none;
+    font-size: clamp(15px, 1.2vw, 18px);
+    font-weight: 500;
+    
+    
+}
+
+.code-btn:hover {
+    background: rgb(0, 220, 255);
+    color: rgb(4, 4, 37);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 5px 20px rgba(0, 220, 255, 0.25);
+}
 
 /* ========================
 Project section
